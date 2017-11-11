@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.container {
+  width: 440px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-search-issues {
+  width: 440px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  text-align: left;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+.table__row {
+  width: 165px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.table__row > label:not([class]) {
+  width: 100%;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.btn-submit {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.issues {
+  margin: 20px 0;
+}
+
+.issue {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #000;
+}
+
+.issue__title {
+  font-weight: 600;
+}
+
+.issue__opened-by > span {
+  display: inline-block;
+  margin-right: 10px;
+}
