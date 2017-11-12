@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const name = (state = "", action) => {
+const user = (state = "", action) => {
   switch (action.type) {
     case 'GET_NAME':
       return action.type;
@@ -9,8 +9,18 @@ const name = (state = "", action) => {
   }
 }
 
+const issues = (state = null, action) => {
+  switch (action.type) {
+    case 'FETCH_ISSUES':
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  name
+  user,
+  issues
 });
 
 export default rootReducer;
