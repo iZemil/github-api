@@ -5,27 +5,25 @@ import Issues from '../components/Issues';
 
 class IssuesData extends Component {
 
-  getData(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const element = e.target.elements;
-
-    const username = element.username.value;
-    const repoName = element.repoName.value;
-
-    element.username.value = "";
-    element.repoName.value = "";
-
+    const username = element.username.value.trim();
+    const repoName = element.repoName.value.trim();
+    
     // https://developer.github.com/v3/issues
-    let url = `https://api.github.com/repos/${username}/${repoName}/issues`;
-
-    fetch(url)
+    if(username && repoName) {
+      let url = `https://api.github.com/repos/${username}/${repoName}/issues`;
+      fetch(url)
       .then((res) => res.json() )
       .then((data) => {
-        console.log(data);
-        
-        return this.props.getData(data);
+        return this.props.fetchData(data)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
+    }
+    
+    element.username.value = "";
+    element.repoName.value = "";
   }
 
   render() {
@@ -33,7 +31,7 @@ class IssuesData extends Component {
       <div className="issues-page">
         <h1>Просмотр issues с выбраного репозитория на Github</h1>
         <form className="form-search-issues"
-          onSubmit={ this.getData.bind(this) }>
+          onSubmit={ this.handleSubmit.bind(this) }>
           <div className="table__row">
             <label htmlFor="username">Имя пользователя: </label>
             <input type="text" name="username" id="username" defaultValue="twbs" />
@@ -58,7 +56,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getData: (data) => { dispatch(fetchIssues(data)) }
+    fetchData: (data) => { dispatch(fetchIssues(data)) }
   }
 };
 

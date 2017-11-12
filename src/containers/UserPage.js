@@ -15,7 +15,7 @@ class App extends Component {
 
     const username = e.target.elements.username.value;
     e.target.elements.username.value = "";
-    GET /users/:username
+    // GET /users/:username
     let url = `https://api.github.com/users/${username}`;
 
     fetch(url)

@@ -13,7 +13,7 @@ export default class Issues extends Component {
               <a href={issue.html_url} className="issue__title">{ issue.title }</a>
               <div className="issue__opened-by">
                 <span>#{ issue.number }</span>
-                открыто <time>{ issue.created_at }</time>
+                открыто <time>{ issue.created_at.match(/\d{4}-\d{2}-\d{2}/) }</time>
               </div>
             </div>
           )
