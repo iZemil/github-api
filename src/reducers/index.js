@@ -1,9 +1,20 @@
 import { combineReducers } from 'redux';
 
-const user = (state = "", action) => {
+const user = (state = {
+  name: 'twbs',
+  repos: []
+}, action) => {
   switch (action.type) {
-    case 'GET_NAME':
-      return action.type;
+    case 'CHANGE_NAME':
+      return {
+        ...state,
+        name: action.name
+      }
+    case 'GET_REPOS':
+      return {
+        ...state,
+        repos: action.data
+      }
     default:
       return state;
   }

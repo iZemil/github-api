@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchIssues } from '../actions';
+import { fetchIssues, getRepos, changeName } from '../actions';
 import Issues from '../components/Issues';
+
+// https://developer.github.com/v3/issues
 
 class IssuesData extends Component {
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const element = e.target.elements;
-    const username = element.username.value.trim();
-    const repoName = element.repoName.value.trim();
+  submitData(repoName) {
+    const username = this.props.user.name;
     
-    // https://developer.github.com/v3/issues
-    if(username && repoName) {
-      let url = `https://api.github.com/repos/${username}/${repoName}/issues`;
+    if (username && repoName) {
+      const url = `https://api.github.com/repos/${username}/${repoName}/issues`;
       fetch(url)
       .then((res) => res.json() )
       .then((data) => {
@@ -21,27 +19,55 @@ class IssuesData extends Component {
       })
       .catch((error) => alert(`Ошибка ${error}`) )
     }
+  }
+
+  handleChangeName(e) {
+    const username = e.target.value;
+    this.props.changeName(username);
+
+    const url = `https://api.github.com/users/${username}/repos`
     
-    element.username.value = "";
-    element.repoName.value = "";
+    fetch(url)
+    .then((res) => res.json() )
+    .then((data) => {
+      return this.props.getRepos(data)
+    })
+    .catch((error) => alert(`Ошибка ${error}`) )
+  }
+
+  handleChangeRepo(e) {
+    const repoName = e.target.value;
+    this.submitData(repoName);
   }
 
   render() {
     return (
       <div className="issues-page">
         <h1>Просмотр issues с выбраного репозитория на Github</h1>
-        <form className="form-search-issues"
-          onSubmit={ this.handleSubmit.bind(this) }>
+        <form className="form-search-issues">
           <div className="table__row">
             <label htmlFor="username">Имя пользователя: </label>
-            <input type="text" name="username" id="username" defaultValue="twbs" />
+            <input type="text" name="username" id="username"
+              defaultValue={this.props.user.name}
+              onChange={ this.handleChangeName.bind(this) }
+            />
           </div>
           <div className="table__row">
-            <label htmlFor="repoName">Название репозитория: </label>
-            <input type="text" id="repoName" defaultValue="bootstrap" />
+            <label htmlFor="repoName">Выберите репозиторий: </label>
+            <select id="repoName" onChange={ this.handleChangeRepo.bind(this) }>
+              <option value="">---</option>
+              { this.props.user.repos.map(repo => {
+                return <option value={repo.name} key={repo.id}>{repo.name}</option>
+              }) }
+            </select>
           </div>
-          <input type="submit" className="btn-submit" value="Поиск" />
         </form>
+        <div className="">
+          Отобразить на странице:
+          <button onClick={() => console.log(10)}>10</button>
+          <button onClick={() => console.log(30)}>30</button>
+          <button onClick={() => console.log(50)}>50</button>
+        </div>
         <Issues data={this.props.issues} />
       </div>
     );
@@ -50,13 +76,16 @@ class IssuesData extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    issues: state.issues
+    issues: state.issues,
+    user: state.user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: (data) => { dispatch(fetchIssues(data)) }
+    fetchData: (data) => { dispatch(fetchIssues(data)) },
+    getRepos: (data) => { dispatch(getRepos(data)) },
+    changeName: (name) => { dispatch(changeName(name)) }
   }
 };
 
