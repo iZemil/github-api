@@ -10,21 +10,19 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  font-size: 18px;
-  font-weight: 400;
+main {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+select {
+  width: 100%;
 }
 
 /* SPECIFIC */
 
 .App {
   text-align: center;
-}
-
-.App-header {
-  background-color: #222;
-  padding: 20px;
-  color: white;
 }
 
 .App-intro {
@@ -38,12 +36,11 @@ h1 {
 }
 
 .form-search-issues {
-  width: 440px;
   margin: 20px auto;
-  padding: 10px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  text-align: left;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #7c7c7d;
 }
 
 input[type="text"] {
@@ -51,15 +48,12 @@ input[type="text"] {
 }
 
 .table__row {
-  width: 165px;
-  margin-right: 10px;
-  display: inline-block;
+  width: 48%;
 }
 
 .table__row > label:not([class]) {
   width: 100%;
   display: inline-block;
-  font-size: 13px;
 }
 
 .btn-submit {
@@ -74,7 +68,8 @@ input[type="text"] {
 .issue {
   margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #000;
+  border: 1px solid #7c7c7d;
+  border-radius: 0.25rem;
 }
 
 .issue__title {
@@ -88,4 +83,26 @@ input[type="text"] {
 .issue__opened-by > span {
   display: inline-block;
   margin-right: 10px;
+}
+
+.user-profile__avatar {
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 0.25rem;
+  vertical-align: top;
+}
+
+.user-profile__data {
+  display: inline-block;
+}
+
+.user-profile__data p {
+  vertical-align: top;
+  font-size: 1.5rem;
+}
+
+.about-page__title {
+  font-size: 1.8rem;
+  line-height: 1.4;
 }

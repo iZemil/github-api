@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 export default class Issues extends Component {
 
   render() {
-    const { data } = this.props;
+    const { issues } = this.props;
 
     return (
       <div className="issues">
-        {data ? data.map((issue) => {
+        {issues.list ? issues.list.map((issue) => {
           return (
             <div className="issue" key={issue.id}>
               <a href={issue.html_url} className="issue__title">{ issue.title }</a>

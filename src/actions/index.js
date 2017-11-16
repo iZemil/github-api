@@ -12,3 +12,13 @@ export const getRepos = (data) => ({
   type: "GET_REPOS",
   data
 });
+
+export const changeIssuesPerPage = (num) => ({
+  type: "CHANGE_ISSUES_PER_PAGE",
+  num
+});
+
+export const fetchUserData = (data) => ({
+  type: "FETCH_USER_DATA",
+  data
+})
