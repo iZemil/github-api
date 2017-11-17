@@ -38,18 +38,29 @@ const user = (state = {
 
 const issues = (state = {
   perPage: 30,
-  list: null
+  list: null,
+  activeIssue: {
+    number: null
+  }
 }, action) => {
   switch (action.type) {
     case 'FETCH_ISSUES':
       return {
         ...state,
+        repoName: action.repoName,
         list: action.data.slice(0, state.perPage)
       }
     case 'CHANGE_ISSUES_PER_PAGE':
       return {
         ...state,
         perPage: action.num
+      }
+    case 'CHANGE_ACTIVE_ISSUE':
+      return {
+        ...state,
+        activeIssue: {
+          number: action.num
+        }
       }
     default:
       return state;

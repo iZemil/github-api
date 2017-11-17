@@ -3,9 +3,10 @@ export const changeName = (name) => ({
   name
 });
 
-export const fetchIssues = (data) => ({
+export const fetchIssues = (data, repoName) => ({
   type: "FETCH_ISSUES",
-  data
+  data,
+  repoName
 });
 
 export const getRepos = (data) => ({
@@ -21,4 +22,9 @@ export const changeIssuesPerPage = (num) => ({
 export const fetchUserData = (data) => ({
   type: "FETCH_USER_DATA",
   data
-})
+});
+
+export const changeActiveIssue = (num) => ({
+  type: "CHANGE_ACTIVE_ISSUE",
+  num
+});

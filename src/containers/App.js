@@ -19,7 +19,7 @@ class App extends Component {
         <main className="container">
           <Route exact path="/" component={IssuesPage}/>
           <Route path="/about" component={AboutPage}/>
-          <Route path="/detail" component={IssueDetailPage}/>
+          <Route path="/detail/:id" component={IssueDetailPage}/>
         </main>
       </div>
     );

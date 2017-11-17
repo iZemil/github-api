@@ -27,7 +27,6 @@ class IssuesData extends Component {
       fetch(url2)
       .then((res) => res.json() )
       .then((data) => {
-        console.log(data)
         return this.props.fetchUserData(data)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
@@ -47,7 +46,7 @@ class IssuesData extends Component {
       fetch(url)
       .then((res) => res.json() )
       .then((data) => {
-        return this.props.fetchIssues(data)
+        return this.props.fetchIssues(data, repoName)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
     }
@@ -93,7 +92,7 @@ const mapDispatchToProps = (dispatch) => {
     changeName: (name) => { dispatch(changeName(name)) },
     fetchUserData: (data) => { dispatch(fetchUserData(data)) },
     getRepos: (data) => { dispatch(getRepos(data)) },
-    fetchIssues: (data) => { dispatch(fetchIssues(data)) },
+    fetchIssues: (data, repoName) => { dispatch(fetchIssues(data, repoName)) },
   }
 };
 

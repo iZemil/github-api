@@ -22,7 +22,7 @@ const AboutPage = () => (
           <ListGroupItemHeading>Автодополнение в поле ввода</ListGroupItemHeading>
           <ListGroupItemText>Измените поле ввода таким образом, чтобы после указания имени пользователя появлялся список автодополнения из существующих репозиториев выбранного пользователя. Загружать обращения нужно сразу после выбора в списке автодополнения.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem>
+        <ListGroupItem active>
           <ListGroupItemHeading>Роутинг</ListGroupItemHeading>
           <ListGroupItemText>Сделайте страницу детального просмотра обращений отображаемую информацию выберите сами.</ListGroupItemText>
         </ListGroupItem>
