@@ -15,11 +15,11 @@ class IssuesData extends Component {
     this.props.changeName(username);
     
     if (username.length >= 3) {
-      const url = `https://api.github.com/users/${username}/repos`
-      fetch(url)
+      const url1 = `https://api.github.com/users/${username}/repos`
+      fetch(url1)
       .then((res) => res.json() )
       .then((data) => {
-        return this.props.getRepos(data)
+        this.props.getRepos(data)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
 
@@ -27,7 +27,7 @@ class IssuesData extends Component {
       fetch(url2)
       .then((res) => res.json() )
       .then((data) => {
-        return this.props.fetchUserData(data)
+        this.props.fetchUserData(data)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
     }
@@ -53,9 +53,11 @@ class IssuesData extends Component {
   }
   
   render() {
+    const { user } = this.props;
+    
     return (
       <div className="issues-page">
-        <UserProfile />
+        <UserProfile user={user} />
         <form className="form-search-issues">
           <div className="table__row">
             <label htmlFor="username">Имя пользователя: </label>
@@ -67,9 +69,9 @@ class IssuesData extends Component {
             <label htmlFor="repoName">Выберите репозиторий: </label>
             <Input type="select" id="repoName" onChange={ this.handleChangeRepo.bind(this) }>
               <option value="">---</option>
-              { this.props.user.repos.map(repo => {
+              { user.repos instanceof Array ? user.repos.map(repo => {
                 return <option value={repo.name} key={repo.id}>{repo.name}</option>
-              }) }
+              }) : null}
             </Input>
           </div>
         </form>

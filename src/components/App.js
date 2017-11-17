@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import IssuesPage from './IssuesPage';
-import Menu from '../components/Menu';
-import AboutPage from '../components/AboutPage';
-import IssueDetailPage from '../components/IssueDetailPage';
+import IssuesPage from '../containers/IssuesPage';
+import Menu from './Menu';
+import AboutPage from './AboutPage';
+import IssueDetailPage from '../containers/IssueDetailPage';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   Route

@@ -6,11 +6,11 @@ const AboutPage = () => (
     <h1 className="about-page__title">Одностраничное приложение для просмотра issues с выбраного репозитория на Github.</h1>
     <p><u>В данном примере реализован следующий функционал:</u></p>
     <ListGroup>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Поле ввода для указания имени пользователя и названия репозитория</ListGroupItemHeading>
           <ListGroupItemText>Данные не нужно загружать, пока не будет нажата кнопка «Поиск». Каждое обращение должно отображаться с указанием номера, названия, даты открытия.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Пейджинг для обращений</ListGroupItemHeading>
           <ListGroupItemText>Убедитесь, что загружаются только те данные, которые отображаются. Предусмотрите возможность выбора количества объектов отображаемых на странице.</ListGroupItemText>
         </ListGroupItem>
@@ -18,19 +18,19 @@ const AboutPage = () => (
           <ListGroupItemHeading>Обработка и индикация ошибок в интерфейсе</ListGroupItemHeading>
           <ListGroupItemText>Реализуйте отображение состояния загрузки обращений с сервера.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Автодополнение в поле ввода</ListGroupItemHeading>
           <ListGroupItemText>Измените поле ввода таким образом, чтобы после указания имени пользователя появлялся список автодополнения из существующих репозиториев выбранного пользователя. Загружать обращения нужно сразу после выбора в списке автодополнения.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Роутинг</ListGroupItemHeading>
           <ListGroupItemText>Сделайте страницу детального просмотра обращений отображаемую информацию выберите сами.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Вывод автора</ListGroupItemHeading>
           <ListGroupItemText>Для каждого обращения выведите автора не просто в виде имени, а с указанием его аватарки и со ссылкой на его Github-профиль.</ListGroupItemText>
         </ListGroupItem>
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>Дизайн</ListGroupItemHeading>
           <ListGroupItemText>Стилистически законченный вид приложения.</ListGroupItemText>
         </ListGroupItem>

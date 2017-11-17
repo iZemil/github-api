@@ -3,16 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class IssueDetailPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      issueNum: null,
-      url: '',
-      comments: 0,
-      state: '',
-      title: '',
-      body: ''
-    }
+
+  state = {
+    issueNum: null,
+    url: '',
+    comments: 0,
+    state: '',
+    title: '',
+    body: ''
   }
 
   fetchIssueDetail() {

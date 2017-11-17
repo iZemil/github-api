@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-class UserProfile extends Component {
+export default class UserProfile extends Component {
 
   render() {
-    const { user } = this.props;
+    const user = this.props.user.data;
+
     return (
       user.isFetching ? 
       <div className="user-profile">
@@ -20,12 +20,4 @@ class UserProfile extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.user.data
-  }
-}
-
-export default connect(mapStateToProps)(UserProfile)
 
