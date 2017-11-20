@@ -16,7 +16,8 @@ export default class UserProfile extends Component {
           <p>Открытых репозиториев: {user.public_repos}</p>
           <a href={user.url}>Ссылка на Github</a>
         </div>
-      </div> : null
+      </div>
+       : null
     );
   }
 }

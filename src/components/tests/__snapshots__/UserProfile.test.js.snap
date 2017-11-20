@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfile.js Рендер компонента UserProfile без ошибок 1`] = `
+<div
+  className="user-profile"
+>
+  <h2>
+    Профиль пользователя
+  </h2>
+  <img
+    alt="avatar"
+    className="user-profile__avatar"
+    src="http://avatarka.ru/13"
+  />
+  <div
+    className="user-profile__data"
+  >
+    <p>
+      @
+      iZemil
+    </p>
+    <p>
+      Имя: 
+      Emil Zaripov
+    </p>
+    <p>
+      Открытых репозиториев: 
+      6
+    </p>
+    <a
+      href="https://github.com/"
+    >
+      Ссылка на Github
+    </a>
+  </div>
+</div>
+`;

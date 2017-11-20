@@ -5,10 +5,11 @@ import { fetchIssues, getRepos, changeName, fetchUserData } from '../actions';
 import Issues from '../components/Issues';
 import IssuesPerPage from './IssuesPerPage';
 import UserProfile from '../components/UserProfile';
+import { Alert } from 'reactstrap';
 
 // https://developer.github.com/v3/issues
 
-class IssuesData extends Component {
+class IssuesPage extends Component {
 
   handleChangeName(e) {
     const username = e.target.value;
@@ -17,11 +18,11 @@ class IssuesData extends Component {
     if (username.length >= 3) {
       const url1 = `https://api.github.com/users/${username}/repos`
       fetch(url1)
-      .then((res) => res.json() )
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         this.props.getRepos(data)
       })
-      .catch((error) => alert(`Ошибка ${error}`) )
+      .catch((error) => console.log(`Ошибка ${error}`) )
 
       const url2 = `https://api.github.com/users/${username}`
       fetch(url2)
@@ -29,7 +30,7 @@ class IssuesData extends Component {
       .then((data) => {
         this.props.fetchUserData(data)
       })
-      .catch((error) => alert(`Ошибка ${error}`) )
+      .catch((error) => console.log(`Ошибка ${error}`) )
     }
   }
 
@@ -75,6 +76,12 @@ class IssuesData extends Component {
             </Input>
           </div>
         </form>
+        <Alert color="warning">
+          Warning alert — check it out!
+        </Alert>
+        <Alert color="success">
+          This is a success alert — check it out!
+        </Alert>
         <IssuesPerPage />
         <Issues issues={this.props.issues} />
       </div>
@@ -98,4 +105,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IssuesData)
+export default connect(mapStateToProps, mapDispatchToProps)(IssuesPage)

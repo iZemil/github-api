@@ -48,7 +48,7 @@ class IssueDetailPage extends Component {
         <Link to="/">← Назад</Link>
         <h2 className="about-page__title">#{this.state.issueNum} {this.state.title}</h2>
         <p>Статус: {this.state.state}</p>
-        <p>{this.state.body}</p>
+        <p>Сообщение: {this.state.body}</p>
         <p>Количество комментариев: {this.state.comments}</p>
         <p><a href={this.state.url} target="_blank">Ссылка на issue</a></p>
       </div>

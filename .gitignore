@@ -23,3 +23,6 @@ src/containers/App.zzztest.js
 src/containers/sum.js
 src/containers/sum.test.js
 src/containers/tests/sum.test.js
+src/components/Link.js
+src/components/tests/__snapshots__/Link.test.js.snap
+src/components/tests/Link.test.js
