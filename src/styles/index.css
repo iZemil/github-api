@@ -48,6 +48,7 @@ input[type="text"] {
 }
 
 .table__row {
+  position: relative;
   width: 48%;
 }
 
@@ -110,4 +111,12 @@ input[type="text"] {
 
 .list-group-item.active {
   border-bottom: 2px solid #dfdfdf;
+}
+
+.fetch-repos-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }

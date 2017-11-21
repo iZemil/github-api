@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AboutPage from '../AboutPage';
+import AboutPage from '../components/AboutPage';
 
 describe('AboutPage.js', () => {
   test('Рендер компонента AboutPage без ошибок', () => {

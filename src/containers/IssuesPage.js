@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Input } from 'reactstrap';
+import { Input, Alert, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { fetchIssues, getRepos, changeName, fetchUserData } from '../actions';
+import { fetchIssues, getRepos, changeName, fetchUserData, catchErrors } from '../actions';
 import Issues from '../components/Issues';
 import IssuesPerPage from './IssuesPerPage';
 import UserProfile from '../components/UserProfile';
-import { Alert } from 'reactstrap';
 
 // https://developer.github.com/v3/issues
 
@@ -15,22 +14,29 @@ class IssuesPage extends Component {
     const username = e.target.value;
     this.props.changeName(username);
     
+  }
+
+  handleClickFetchUserData() {
+    const username = this.props.user.input_name;
     if (username.length >= 3) {
-      const url1 = `https://api.github.com/users/${username}/repos`
-      fetch(url1)
+
+      // fetching user repos
+      const userReposUrl = `https://api.github.com/users/${username}/repos`
+      fetch(userReposUrl)
       .then(res => res.json())
       .then(data => {
         this.props.getRepos(data)
       })
-      .catch((error) => console.log(`Ошибка ${error}`) )
+      .catch((error) => { console.log(`Ошибка ${error}`); this.props.catchErrors() } )
 
-      const url2 = `https://api.github.com/users/${username}`
-      fetch(url2)
+      // fetching user data
+      const userDataUrl = `https://api.github.com/users/${username}`
+      fetch(userDataUrl)
       .then((res) => res.json() )
       .then((data) => {
         this.props.fetchUserData(data)
       })
-      .catch((error) => console.log(`Ошибка ${error}`) )
+      .catch((error) => { console.log(`Ошибка ${error}`); this.props.catchErrors() } )
     }
   }
 
@@ -39,6 +45,7 @@ class IssuesPage extends Component {
     this.submitData(repoName);
   }
   
+  // Fetching issues of selected repository
   submitData(repoName) {
     const username = this.props.user.input_name;
     
@@ -47,7 +54,7 @@ class IssuesPage extends Component {
       fetch(url)
       .then((res) => res.json() )
       .then((data) => {
-        return this.props.fetchIssues(data, repoName)
+        this.props.fetchIssues(data, repoName)
       })
       .catch((error) => alert(`Ошибка ${error}`) )
     }
@@ -65,6 +72,9 @@ class IssuesPage extends Component {
             <Input type="text" name="username" id="username"
               onChange={ this.handleChangeName.bind(this) }
             />
+            <Button color="secondary" className="fetch-repos-btn"
+              onClick={ this.handleClickFetchUserData.bind(this) }
+            >Запрос →</Button>
           </div>
           <div className="table__row">
             <label htmlFor="repoName">Выберите репозиторий: </label>
@@ -76,12 +86,7 @@ class IssuesPage extends Component {
             </Input>
           </div>
         </form>
-        <Alert color="warning">
-          Warning alert — check it out!
-        </Alert>
-        <Alert color="success">
-          This is a success alert — check it out!
-        </Alert>
+        { user.errors ? <Alert color="warning">Ошибка получения данных!</Alert> : null }
         <IssuesPerPage />
         <Issues issues={this.props.issues} />
       </div>
@@ -102,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUserData: (data) => { dispatch(fetchUserData(data)) },
     getRepos: (data) => { dispatch(getRepos(data)) },
     fetchIssues: (data, repoName) => { dispatch(fetchIssues(data, repoName)) },
+    catchErrors: () => { dispatch(catchErrors()) }
   }
 };
 

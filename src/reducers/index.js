@@ -5,7 +5,8 @@ const user = (state = {
   data: {
     isFetching: false
   },
-  repos: []
+  repos: [],
+  errors: false
 }, action) => {
   switch (action.type) {
     case 'CHANGE_NAME':
@@ -30,6 +31,11 @@ const user = (state = {
       return {
         ...state,
         repos: action.data
+      }
+    case 'CATCH_ERRORS':
+      return {
+        ...state,
+        errors: true
       }
     default:
       return state;

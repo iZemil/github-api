@@ -26,3 +26,5 @@ src/containers/tests/sum.test.js
 src/components/Link.js
 src/components/tests/__snapshots__/Link.test.js.snap
 src/components/tests/Link.test.js
+tests/sum.test.js
+src/__tests__/sum.test.js

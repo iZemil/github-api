@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export default class Example extends React.Component {
@@ -22,7 +22,7 @@ export default class Example extends React.Component {
       <div>
         <Navbar color="light" light>
           <div className="container">
-            <NavbarBrand href="https://github.com/iZemil/github-api" className="mr-auto">React+Redux GitHub API example</NavbarBrand>
+            <Link to="/" className="mr-auto navbar-brand" href="https://github.com/iZemil/github-api">React+Redux GitHub API example</Link>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse isOpen={!this.state.collapsed} navbar>
               <Nav navbar>

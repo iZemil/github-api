@@ -28,3 +28,7 @@ export const changeActiveIssue = (num) => ({
   type: "CHANGE_ACTIVE_ISSUE",
   num
 });
+
+export const catchErrors = () => ({
+  type: "CATCH_ERRORS"
+});

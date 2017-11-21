@@ -1,9 +1,9 @@
-jest.unmock('../UserProfile');
+jest.unmock('../components/UserProfile');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import UserProfile from '../UserProfile';
+import UserProfile from '../components/UserProfile';
 import renderer from 'react-test-renderer';
 Enzyme.configure({ adapter: new Adapter() });
 

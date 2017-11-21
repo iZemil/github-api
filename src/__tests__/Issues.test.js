@@ -1,9 +1,9 @@
-jest.unmock('../Issues');
+jest.unmock('../components/Issues');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Issues from '../Issues';
+import Issues from '../components/Issues';
 import renderer from 'react-test-renderer';
 Enzyme.configure({ adapter: new Adapter() });
 
